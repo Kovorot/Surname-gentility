@@ -1,8 +1,14 @@
 import java.util.Comparator;
 
 public class PersonWordsSurnameComparator implements Comparator<Person> {
-    private int maxWordAmount;
+    private final int maxWordAmount;
 
+    //Ограничение по количеству слов в фамилии
+    public PersonWordsSurnameComparator(int maxWordAmount) {
+        this.maxWordAmount = maxWordAmount;
+    }
+
+    //Основной метод
     @Override
     public int compare(Person o1, Person o2) {
         String[] parts1 = o1.getSurname().split(" ");
@@ -16,9 +22,5 @@ public class PersonWordsSurnameComparator implements Comparator<Person> {
         } else {
             return (Integer.compare(o1.getAge(), o2.getAge())) * -1;
         }
-    }
-
-    public PersonWordsSurnameComparator (int maxWordAmount) {
-        this.maxWordAmount = maxWordAmount;
     }
 }

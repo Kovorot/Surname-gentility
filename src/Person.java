@@ -4,7 +4,8 @@ public class Person {
     private String surname;
     private int age;
 
-    public Person (String name, String surname, int age) {
+    //Конструктор
+    public Person(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -15,27 +16,28 @@ public class Person {
         return surname + " " + age;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    //Инкапсуляция
     public String getName() {
         return name;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSurname() {
         return surname;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public int getAge() {
         return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
