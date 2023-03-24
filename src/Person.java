@@ -10,6 +10,11 @@ public class Person {
         this.age = age;
     }
 
+    @Override
+    public String toString() {
+        return surname + " " + age;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
