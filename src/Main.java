@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -17,10 +18,24 @@ public class Main {
         people.add(new Person("Оксана", "Вячеславовна", 13));                //9 will be removed
         people.add(new Person("Владимир", "Фон Барон", 8));                  //6 will be removed
 
-        Collections.sort(people, new PersonWordsSurnameComparator(3));
-        System.out.println(people);
-
         people.removeIf(Person -> Person.getAge() < 18);
+
+        Comparator<Person> comparator = (o1, o2) -> {
+            int maxWordAmount = 3;
+            String[] parts1 = o1.getSurname().split(" ");
+            String[] parts2 = o2.getSurname().split(" ");
+            if (parts1.length >= maxWordAmount && parts2.length >= maxWordAmount) {
+                return (Integer.compare(o1.getAge(), o2.getAge())) * -1;
+            } else if (parts1.length > parts2.length) {
+                return -1;
+            } else if (parts1.length < parts2.length) {
+                return 1;
+            } else {
+                return (Integer.compare(o1.getAge(), o2.getAge())) * -1;
+            }
+        };
+
+        Collections.sort(people, comparator);
         System.out.println(people);
     }
 }
